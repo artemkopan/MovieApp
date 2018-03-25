@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion compileSdk
+
+    defaultConfig {
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode rootProject.totalVersionCode
+        versionName rootProject.versionName
+    }
+
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
+    implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
+
+    implementation "android.arch.lifecycle:extensions:${arch}"
+    annotationProcessor "android.arch.lifecycle:compiler:${arch}"
+
+    implementation "com.android.support.constraint:constraint-layout:${constraintVersion}"
+
+    implementation "com.google.dagger:dagger:${daggerVersion}"
+
+
+    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+
+}

@@ -20,17 +20,24 @@ androidExtensions {
 
 dependencies {
     implementation project(':domain')
-    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
-    implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
 
+    api "com.android.support:appcompat-v7:${supportLibraryVersion}"
+    api "com.android.support:recyclerview-v7:${supportLibraryVersion}"
+
+    implementation "android.arch.lifecycle:livedata-core:${arch}"
     implementation "android.arch.lifecycle:extensions:${arch}"
-    annotationProcessor "android.arch.lifecycle:compiler:${arch}"
 
     implementation "com.android.support.constraint:constraint-layout:${constraintVersion}"
 
-    implementation "com.google.dagger:dagger:${daggerVersion}"
-
+    api "com.google.dagger:dagger:${daggerVersion}"
+    api "com.google.dagger:dagger-android-support:${daggerVersion}"
 
     implementation "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+
+    api "com.github.bumptech.glide:glide:${glide}"
+    implementation ("com.github.bumptech.glide:recyclerview-integration:${glide}") {
+        transitive = false
+    }
+    implementation 'jp.wasabeef:glide-transformations:3.1.1'
 
 }

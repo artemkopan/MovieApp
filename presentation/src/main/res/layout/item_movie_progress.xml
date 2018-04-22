@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/movie_list_item_progress_height"
+    android:padding="@dimen/margin2x">
+
+    <ProgressBar
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="@dimen/progress_size"
+        android:layout_height="@dimen/progress_size"
+        android:layout_gravity="center"/>
+
+</FrameLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Movie List-->
+    <dimen name="movie_item_space">@dimen/margin4x</dimen>
+    <dimen name="movie_list_item_width">100dp</dimen>
+    <dimen name="movie_list_item_height">196dp</dimen>
+    <dimen name="movie_list_item_progress_height">150dp</dimen>
+
+
+    <style name="Movie"/>
+
+    <style name="Movie.List"/>
+
+    <style name="Movie.List.Recycler">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingTop">@dimen/movie_item_space</item>
+        <item name="android:paddingBottom">@dimen/movie_item_space</item>
+    </style>
+
+
+
+</resources>

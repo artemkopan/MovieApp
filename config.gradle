@@ -1,0 +1,53 @@
+
+//Additional data
+ext {
+    API_URL = "https://api.themoviedb.org/3/"
+}
+
+//Android apps' versions
+ext {
+    APP_NAME = "ArchitectureExample"
+    APP_ID = "com.artemkopan.example"
+
+    minSdk = 21
+    targetSdk = 27
+    compileSdk = 27
+    buildTools = "27.0.3"
+
+    //X.0-99.0-999 == major.minor.patch/hotfixes
+    versionCodeMajor = 0
+    versionCodeMinor = 0
+    versionCodePatch = 1
+    totalVersionCode = (versionCodeMajor * 100000) + (versionCodeMinor * 1000) + versionCodePatch
+    versionName = "${versionCodeMajor}.${versionCodeMinor}.${versionCodePatch}"
+}
+
+//Dependencies
+ext {
+    //Google
+    supportLibraryVersion = '27.+'
+    constraintVersion = '1.1.0-beta6'
+
+    //Architecture components
+    arch = '1.1.0'
+
+    // Rx
+    rxJavaVersion = '2.1.12'
+    rxAndroidVersion = '2.0.2'
+    rxKotlinVersion = '2.2.0'
+
+    // DI
+    daggerVersion = '2.14.1'
+    javaxVersion = '1@jar'
+
+    // Debug
+    timber = '4.6.1'
+
+    // Rest
+    retrofit = '2.3.0'
+    okHttp = '3.9.0'
+    gson = '2.8.1'
+    stetho = '1.5.0'
+
+    glide = '4.7.1'
+}

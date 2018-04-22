@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="corner_radius">8dp</dimen>
+
+    <dimen name="margin1x">4dp</dimen>
+    <dimen name="margin2x">8dp</dimen>
+    <dimen name="margin4x">16dp</dimen>
+
+
+    <dimen name="progress_size">30dp</dimen>
+
+</resources>

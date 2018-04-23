@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/movie_list_item_width"
-    android:layout_height="@dimen/movie_list_item_height">
+    android:layout_height="@dimen/movie_list_item_height"
+    tools:context=".ui.list.MovieListActivity">
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/thumbnailView"
@@ -18,10 +19,26 @@
         tools:src="@tools:sample/avatars"/>
 
     <TextView
+        android:id="@+id/voteAverageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/space1x"
+        android:paddingStart="@dimen/space1.5x"
+        android:paddingEnd="@dimen/space1x"
+        android:background="@drawable/fr_rating"
+        android:drawablePadding="@dimen/space0.5x"
+        android:drawableStart="@drawable/ic_star_white_14dp"
+        android:gravity="center"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/thumbnailView"
+        app:layout_constraintTop_toTopOf="@id/thumbnailView"
+        tools:text="11"/>
+
+    <TextView
         android:id="@+id/titleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin1x"
+        android:layout_marginTop="@dimen/space1x"
         android:ellipsize="end"
         android:maxLines="2"
         app:layout_constraintTop_toBottomOf="@id/thumbnailView"

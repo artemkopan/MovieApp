@@ -8,5 +8,7 @@ data class MovieEntity(
 
         val voteAverage: Double? = null,
 
+        val voteAverageFormatted: String? = null,
+
         val id: Int? = null
 )

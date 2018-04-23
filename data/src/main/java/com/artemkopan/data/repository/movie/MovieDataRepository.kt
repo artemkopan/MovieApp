@@ -4,6 +4,7 @@ import com.artemkopan.data.mapper.MovieMapper
 import com.artemkopan.data.mapper.PaginationMapper
 import com.artemkopan.data.response.MovieResponse
 import com.artemkopan.data.response.PaginationResponse
+import com.artemkopan.domain.Const
 import com.artemkopan.domain.entity.MovieEntity
 import com.artemkopan.domain.entity.PaginationEntity
 import com.artemkopan.domain.repository.movie.MovieRepository
@@ -23,7 +24,8 @@ class MovieDataRepository @Inject constructor(private val movieService: MovieSer
 
     private fun mapItems(): (PaginationResponse<MovieResponse>) -> PaginationEntity<MovieEntity> {
         return {
-            PaginationMapper(MovieMapper().mapList(it.results ?: emptyList()))
+            PaginationMapper(MovieMapper(Const.Formatter.DECIMAL_FORMAT)
+                    .mapList(it.results ?: emptyList()))
                     .map(it)
         }
     }

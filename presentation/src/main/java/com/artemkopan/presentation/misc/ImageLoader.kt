@@ -21,6 +21,52 @@ import com.bumptech.glide.request.RequestOptions
 const val NO_OVERRIDE = -1
 
 
+fun createRequestOptions(
+        @Px width: Int = NO_OVERRIDE,
+        @Px height: Int = NO_OVERRIDE,
+        errorDrawable: GlideHolder = GlideHolder.Res(R.drawable.ic_image_broken_grey_24dp),
+        placeholderDrawable: GlideHolder = GlideHolder.Res(R.drawable.ic_image_grey_24dp),
+        centerCrop: Boolean = true,
+        skipMemoryCache: Boolean = false,
+        diskCacheStrategy: DiskCacheStrategy = DiskCacheStrategy.AUTOMATIC,
+        vararg transformations: Transformation<Bitmap>): RequestOptions {
+
+    val options = RequestOptions()
+
+    when (errorDrawable) {
+        is Drawable -> options.error(errorDrawable)
+        is GlideHolder.Res -> options.error(errorDrawable.res)
+    }
+
+    when (placeholderDrawable) {
+        is Drawable -> options.placeholder(placeholderDrawable)
+        is GlideHolder.Res -> options.placeholder(placeholderDrawable.res)
+    }
+
+    options.fitCenter()
+
+    if (centerCrop && transformations.isEmpty()) {
+        options.centerCrop()
+    } else if (centerCrop && transformations.isNotEmpty()) {
+        options.transform(MultiTransformation(CenterCrop(), *transformations))
+    } else if (transformations.isNotEmpty()) {
+        options.transform(MultiTransformation(*transformations))
+    }
+
+    if (width != NO_OVERRIDE && height != NO_OVERRIDE) {
+        options.override(width, height)
+    }
+
+    if (skipMemoryCache) {
+        options.skipMemoryCache(true)
+    }
+
+    options.diskCacheStrategy(diskCacheStrategy)
+
+    return options
+}
+
+
 @SuppressLint("CheckResult")
 fun ImageView.loadImage(
         source: GlideSource = GlideSource.Context(context.applicationContext),
@@ -54,27 +100,8 @@ fun ImageView.loadImage(
             .load(model)
 
 
-    val options = RequestOptions()
-
-    when (errorDrawable) {
-        is Drawable -> options.error(errorDrawable)
-        is GlideHolder.Res -> options.error(errorDrawable.res)
-    }
-
-    when (placeholderDrawable) {
-        is Drawable -> options.placeholder(placeholderDrawable)
-        is GlideHolder.Res -> options.placeholder(placeholderDrawable.res)
-    }
-
-    options.fitCenter()
-
-    if (centerCrop && transformations.isEmpty()) {
-        options.centerCrop()
-    } else if (centerCrop && transformations.isNotEmpty()) {
-        options.transform(MultiTransformation(CenterCrop(), *transformations))
-    } else if (transformations.isNotEmpty()) {
-        options.transform(MultiTransformation(*transformations))
-    }
+    val options = createRequestOptions(width, height, errorDrawable, placeholderDrawable, centerCrop,
+            skipMemoryCache, diskCacheStrategy, *transformations)
 
     if (animate) {
         request.transition(DrawableTransitionOptions.withCrossFade())
@@ -82,19 +109,10 @@ fun ImageView.loadImage(
         options.dontAnimate()
     }
 
-    if (width != NO_OVERRIDE && height != NO_OVERRIDE) {
-        options.override(width, height)
-    }
 
     if (requestListener != null) {
         request.listener(requestListener)
     }
-
-    if (skipMemoryCache) {
-        options.skipMemoryCache(true)
-    }
-
-    options.diskCacheStrategy(diskCacheStrategy)
 
     request.apply(options)
     request.into(this)

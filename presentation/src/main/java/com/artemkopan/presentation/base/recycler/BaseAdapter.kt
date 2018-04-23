@@ -5,7 +5,6 @@ import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.util.DiffUtil
 import android.view.View
 import android.view.ViewGroup
-import com.artemkopan.domain.utils.Logger
 import kotlin.properties.Delegates
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
@@ -58,21 +57,22 @@ abstract class BaseAdapter<T, VH : BaseHolder<T>> : ListAdapter<T, VH> {
             val pos = holder.adapterPosition
             clickEvent?.invoke(view.id, pos, getItem(pos))
         })
-        Logger.i("onViewAttachedToWindow ${holder.adapterPosition}")
     }
 
     override fun onViewDetachedFromWindow(holder: VH) {
         super.onViewDetachedFromWindow(holder)
         holder.unbindClickListener()
-        Logger.i("onViewDetachedFromWindow ${holder.adapterPosition}")
     }
 
     override fun onViewRecycled(holder: VH) {
-        Logger.i("onViewRecycled ${holder.adapterPosition}")
         holder.recycled()
     }
 
     //endregion
+
+    public override fun getItem(position: Int): T {
+        return super.getItem(position)
+    }
 
     override fun getItemCount(): Int {
         return if (showFooter) getListSize() + 1 else getListSize()

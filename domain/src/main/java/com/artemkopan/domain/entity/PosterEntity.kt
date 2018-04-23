@@ -11,5 +11,4 @@ data class PosterEntity(private val path: String?) : TmdbImageModel {
         return String.format(Locale.US, Const.Url.TMDB_IMG, path)
     }
 
-
 }

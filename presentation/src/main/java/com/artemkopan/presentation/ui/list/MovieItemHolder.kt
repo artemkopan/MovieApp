@@ -24,6 +24,7 @@ class MovieItemHolder(containerView: View)
                 transformations = *arrayOf(RoundedCornersTransformation(radius, 0)))
 
         titleView.text = item.title
+        voteAverageView.text = item.voteAverageFormatted
     }
 
     override fun bindClickListener(listener: View.OnClickListener) {

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/movie_list_item_progress_height"
-    android:padding="@dimen/margin2x">
+    android:padding="@dimen/space2x">
 
     <ProgressBar
         style="@style/Widget.AppCompat.ProgressBar"
